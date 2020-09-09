@@ -7,18 +7,24 @@ if test ! $(which brew); then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Update Homebrew recipes
+# # Update Homebrew recipes
 brew update
 
-# Install all our dependencies with bundle (See Brewfile)
+# # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
 brew bundle
+brew cleanup
 
 mkdir $HOME/dev
+DEV=$HOME/dev
 
 # Clone github repos
-./clone-personal.sh
-./clone-spiff.sh
+
+echo "Cloning personal repositories..."
+
+# git clone git@github.com:ccblaisdell/dotfiles.git $DEV/dotfiles
+# git clone git@github.com:ccblaisdell/cyborg-brain.git $DEV/cyborg-brain
+# git clone git@github.com:ccblaisdell/colbyblaisdell.com.git $DEV/colbyblaisdell.com
 
 # Set macOS preferences
 # We will run this last because this will reload the shell

@@ -1,6 +1,5 @@
 # Taps
 tap 'homebrew/cask'
-tap 'homebrew/cask-eid'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
@@ -15,6 +14,12 @@ brew 'git'
 brew 'gnupg2'
 brew 'grep'
 brew 'mas' # Mac App Store manager
+brew 'vim'
+brew 'openssh'
+brew 'z'
+brew 'curl'
+brew 'wget'
+brew 'zsh'
 
 # Media
 brew 'optipng'
@@ -50,7 +55,8 @@ cask 'qlstephen'
 # Fonts
 cask 'font-lato'
 cask 'font-open-sans'
-cask 'font-firacode'
+cask 'font-fira-code'
+cask 'font-fira-code-nerd-font'
 cask 'font-roboto'
 cask 'font-source-code-pro-for-powerline'
 cask 'font-source-code-pro'
