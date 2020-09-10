@@ -43,6 +43,7 @@ cask 'steam'
 cask 'visual-studio-code'
 cask 'iterm2'
 cask 'rectangle'
+cask 'zoomus'
 
 # A11y
 cask 'contraste'
