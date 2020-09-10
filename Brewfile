@@ -41,6 +41,7 @@ cask 'kap'
 cask 'slack'
 cask 'steam'
 cask 'visual-studio-code'
+cask 'iterm2'
 
 # A11y
 cask 'contraste'
