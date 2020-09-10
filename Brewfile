@@ -20,6 +20,7 @@ brew 'z'
 brew 'curl'
 brew 'wget'
 brew 'zsh'
+brew 'tmux'
 
 # Media
 brew 'optipng'
@@ -27,7 +28,6 @@ brew 'svgo'
 
 # Development
 brew 'imagemagick'
-brew 'asdf'
 
 # Apps
 cask 'alfred'
@@ -43,6 +43,7 @@ cask 'steam'
 cask 'visual-studio-code'
 cask 'iterm2'
 cask 'rectangle'
+cask 'rocket'
 cask 'zoomus'
 
 # A11y
@@ -70,3 +71,4 @@ cask 'font-source-serif-pro'
 mas 'Twitterrific', id: 1289378661
 mas 'Constrast', id: 1254981365
 mas 'ColorSlurp', id: 1287239339
+mas 'Xcode', id: 497799835
