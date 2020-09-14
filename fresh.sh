@@ -18,6 +18,26 @@ brew cleanup
 mkdir $HOME/dev
 DEV=$HOME/dev
 
+# TODO:
+# set up zsh
+# sudo chsh -s /usr/local/bin/zsh
+# # asdf
+# . $HOME/.asdf/asdf.sh
+#
+# source $HOME/.zsh_aliases
+#
+# # native zsh autocomplete
+# autoload -Uz compinit && compinit
+#
+# # fish like autosuggestions
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#
+# # Probably needs to be last(-ish)
+# eval "$(starship init zsh)"
+#
+# # Syntax highlighting must be last, so they say. we shall see
+# source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Set macOS preferences
 # We will run this last because this will reload the shell
 source .macos

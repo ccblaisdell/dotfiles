@@ -857,4 +857,8 @@ for app in "Activity Monitor" \
 	"iCal"; do
 	killall "${app}" &> /dev/null
 done
+
+# Fix zsh completions complaining about insecure files
+compaudit | xargs chmod g-w
+
 echo "Done. Note that some of these changes require a logout/restart to take effect."
