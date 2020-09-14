@@ -1,13 +1,36 @@
 {
+  :devices {
+    ; built in kb is 1452
+    ; I'm guessing 76 is external apple kb?
+    :apple [
+      {:vendor_id 1452}
+      {:vendor_id 76}
+    ]
+    ; ducky one 2 mini rgb
+    :ducky [
+      {:vendor_id 1046, :product_id 291}
+    ]
+  }
+
   :layers {
     ; implement caps lock mode
-    :caps_mode {:key :caps_lock :alone {:key :escape}}}
+    :caps_mode {:key :caps_lock :alone {:key :escape}}
+  }
+
   :main [
+    {:des "swap cmd and opt on ducky kb"
+      :rules [
+        [:left_option :left_command :ducky]
+        [:left_command :left_option :ducky]
+        [:right_option :right_command :ducky]
+        [:right_command :right_option :ducky]
+      ]
+    }
 
     {:des "capslock layer"
       :rules [
         :caps_mode
-        ; VIM MODE - hold caps and AJKL
+        ; VIM MODE - hold caps and HJKL
         ; home row computing
         [:##h :left_arrow] ; even with f, still do left arrow
         [:##k :up_arrow]
@@ -15,8 +38,8 @@
         [:##l :right_arrow]
 
         ; WASD to arrow keys
-        [:##a :left_arrow]
         [:##w :up_arrow]
+        [:##a :left_arrow]
         [:##s :down_arrow]
         [:##d :right_arrow]
       ]
