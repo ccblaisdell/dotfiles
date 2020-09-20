@@ -1,19 +1,12 @@
 #!/bin/sh
 
 # Copy files from $HOME into here
-
-files=(
-  .gitconfig
-  .gitignore
-  .vimrc
-  .zsh_aliases
-  .zshrc
-  tmux.conf
-)
+source './files_to_sync.sh'
 
 echo "Copying from dotfiles repo to HOME directory"
-for file in "${files[@]}"
+for file in "${FILES[@]}"
 do
+  echo "$file"
   cp "./$file" "$HOME/$file"
 done
 echo "Finished updating dotfiles!"
