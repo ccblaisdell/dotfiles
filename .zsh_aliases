@@ -1,0 +1,16 @@
+# Helpers
+alias be='bundle exec'
+
+# Utils
+alias cat='bat'
+alias ls='exa'
+
+# Paths
+alias hosts='/private/etc/hosts'
+
+# Personal
+alias notes='code ~/dev/cyborg-brain/'
+
+# Dotfiles
+alias updots='sh ~/dev/dotfiles/update.sh'
+

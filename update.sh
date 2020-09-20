@@ -11,8 +11,10 @@ files=(
   tmux.conf
 )
 
+echo "Copying safelisted files from home to dotfiles"
 for file in "${files[@]}"
 do
   cp "$HOME/$file" "$HOME/dev/dotfiles/$file"
 done
+echo "Finished updating dotfiles!"
 
