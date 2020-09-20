@@ -20,10 +20,10 @@
   :main [
     {:des "swap cmd and opt on ducky kb"
       :rules [
-        [:left_option :left_command :ducky]
-        [:left_command :left_option :ducky]
-        [:right_option :right_command :ducky]
-        [:right_command :right_option :ducky]
+        [:left_option   :left_command  :ducky]
+        [:left_command  :left_option   :ducky]
+        [:right_option  :right_command :ducky]
+        [:right_command :right_option  :ducky]
       ]
     }
 

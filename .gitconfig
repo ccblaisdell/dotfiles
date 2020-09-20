@@ -1,3 +1,13 @@
 [user]
 	email = ccblaisdell@gmail.com
 	name = Colby Blaisdell
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore
+[alias]
+  # Current working tree in short format
+  s = status -s
+
+  # Amend last commit without touching the message
+  amend = --amend --no-edit
+ 

@@ -24,6 +24,7 @@ brew 'tmux'
 brew 'micro'
 brew 'htop'
 brew 'yqrashawn/goku/goku'
+brew 'vcsh'
 
 # Media
 brew 'optipng'
@@ -55,6 +56,7 @@ cask 'middle' # ex. three finger tap for middle click
 cask 'numi' # lovely little notebook calculator
 cask 'meetingbar' # show upcoming events and click to join meetings
 cask 'karabiner-elements' # for caps-lock as hyper modifier + esc
+cask 'monodraw'
 
 # A11y
 cask 'contraste'
