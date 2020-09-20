@@ -24,7 +24,7 @@ brew 'tmux'
 brew 'micro'
 brew 'htop'
 brew 'yqrashawn/goku/goku'
-brew 'vcsh'
+brew 'exa'
 
 # Media
 brew 'optipng'
