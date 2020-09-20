@@ -8,10 +8,11 @@ files=(
   .vimrc
   .zsh_aliases
   .zshrc
+  tmux.conf
 )
 
 for file in "${files[@]}"
 do
-  bat "$HOME/$file"
+  cp "$HOME/$file" "$HOME/dev/dotfiles/$file"
 done
 
