@@ -57,6 +57,7 @@ cask 'numi' # lovely little notebook calculator
 cask 'meetingbar' # show upcoming events and click to join meetings
 cask 'karabiner-elements' # for caps-lock as hyper modifier + esc
 cask 'monodraw'
+cask 'ngrok'
 
 # A11y
 cask 'contraste'

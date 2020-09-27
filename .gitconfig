@@ -4,6 +4,8 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
+[commit]
+  template = ~/.gitmessage
 [alias]
 	# Current working tree in short format
 	s = status -s
