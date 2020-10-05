@@ -1,8 +1,8 @@
-# Notes
+# README
 
-## Plugins
+Right now this is mostly Mac-specific, but someday soon I will make it more linux-friendly!
 
-Considering swithing from oh-my-zsh to something slightly lighter.
+## Todo
 
 - [ ] Document scripts
 - [x] Use shared file list for update,apply, etc
@@ -21,4 +21,4 @@ Considering swithing from oh-my-zsh to something slightly lighter.
 ## Theme
 
 - https://starship.rs/
-- https://github.com/romkatv/powerlevel10k
+
