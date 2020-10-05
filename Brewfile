@@ -25,6 +25,7 @@ brew 'micro'
 brew 'htop'
 brew 'yqrashawn/goku/goku'
 brew 'exa'
+brew 'ranger'
 
 # Media
 brew 'optipng'

@@ -6,8 +6,8 @@ FILES=(
   .gitconfig
   .gitignore
   .gitmessage
+  .tmux.conf
   .vimrc
   .zsh_aliases
   .zshrc
-  tmux.conf
 )
