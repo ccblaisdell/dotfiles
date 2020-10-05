@@ -17,6 +17,7 @@ Right now this is mostly Mac-specific, but someday soon I will make it more linu
 - [x] Figure out three finger tap
 - [ ] Look into more alfred integrations. consider integrating with Dock?
 - [x] Figure out LShift Rshift parens
+- [ ] Consider checking in stuff from `~/.config` (ex. `starship.toml`)
 
 ## Theme
 
