@@ -5,7 +5,6 @@
 FILES=(
   .gitconfig
   .gitignore
-  .gitmessage
   .tmux.conf
   .vimrc
   .zsh_aliases
