@@ -13,6 +13,9 @@ source $HOME/.spiff/.zsh_aliases
 # Z
 . /usr/local/etc/profile.d/z.sh
 
+# McFly history search
+eval "$(mcfly init zsh)"
+
 # native zsh autocomplete
 autoload -Uz compinit && compinit
 
@@ -36,3 +39,10 @@ eval "$(starship init zsh)"
 # Syntax highlighting must be last, so they say. we shall see
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+export PATH="/usr/local/sbin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ccblaisdell/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ccblaisdell/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ccblaisdell/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ccblaisdell/google-cloud-sdk/completion.zsh.inc'; fi

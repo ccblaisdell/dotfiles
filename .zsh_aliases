@@ -5,17 +5,45 @@ alias be='bundle exec'
 alias cat='bat'
 alias ls='exa'
 alias tf='terraform'
+alias mux='tmuxinator'
 
 # Paths
 alias hosts='/private/etc/hosts'
 
 # Personal
 alias notes='code ~/dev/cyborg-brain/'
+alias cyborg='notes'
 alias bench='hyperfine'
 
 # Dotfiles
 alias updots='sh ~/dev/dotfiles/update.sh'
 
 # Git
-alias cor="git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads | fzf --reverse --height 35% --nth 1 | awk '{print $1}' | xargs git checkout"
+alias cof="git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads | fzf --reverse --height 35% --nth 1 | awk '{print $1}' | xargs git checkout"
+alias gg="cof"
+alias gbc="git branch --show-current | tr -d '\n' | pbcopy"
+# alias gbd="git branch -D $(git branch | grep $1)"
+git_delete_branches_grep() {
+  git branch -D $(git branch | grep $1)
+}
+alias gbd="git_delete_branches_grep"
+
+# VIM
+alias vi="nvim"
+alias vim="nvim"
+alias lvim="~/.local/bin/lvim"
+
+# tmux
+alias attach="tmux -CC attach"
+
+# iterm
+# When alignment gets crazy type this to reset it
+alias termfix="stty sane"
+alias fixterm="termfix"
+
+# What process are listening on ports right now?
+alias ports="lsof -i -P | grep LISTEN"
+
+# Jira
+alias jira='!f() { open https://spiff.atlassian.net/browse/$(git rev-parse --abbrev-ref HEAD | sed '"'"'s/^.*\/\([a-zA-Z]+-\d+\).*/\1/'"'"'); }; f'
 
