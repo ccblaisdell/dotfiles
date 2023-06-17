@@ -59,6 +59,7 @@ cask 'meetingbar' # show upcoming events and click to join meetings
 cask 'karabiner-elements' # for caps-lock as hyper modifier + esc
 cask 'monodraw'
 cask 'ngrok'
+# pika app isn't in homebrew yet. It's a free, open-source color grabber utility
 
 # A11y
 cask 'contraste'

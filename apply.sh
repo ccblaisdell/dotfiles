@@ -10,4 +10,3 @@ do
   cp "./$file" "$HOME/$file"
 done
 echo "Finished updating dotfiles!"
-

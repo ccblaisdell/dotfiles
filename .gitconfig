@@ -10,4 +10,3 @@
 	
 	# Ammend last commit without touching the message
 	amend = --amend --no-edit
-

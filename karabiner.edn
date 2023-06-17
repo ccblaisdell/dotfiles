@@ -18,30 +18,9 @@
   }
 
   :main [
-    {:des "swap cmd and opt on ducky kb"
-      :rules [
-        [:left_option   :left_command  :ducky]
-        [:left_command  :left_option   :ducky]
-        [:right_option  :right_command :ducky]
-        [:right_command :right_option  :ducky]
-      ]
-    }
-
     {:des "capslock layer"
       :rules [
         :caps_mode
-        ; VIM MODE - hold caps and HJKL
-        ; home row computing
-        [:##h :left_arrow] ; even with f, still do left arrow
-        [:##k :up_arrow]
-        [:##j :down_arrow]
-        [:##l :right_arrow]
-
-        ; WASD to arrow keys
-        [:##w :up_arrow]
-        [:##a :left_arrow]
-        [:##s :down_arrow]
-        [:##d :right_arrow]
       ]
     }
 
