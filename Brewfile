@@ -41,6 +41,7 @@ brew 'zsh'
 
 # Apps
 cask 'caffeine' # keep your machine awake
+cask 'cleanshot'
 cask 'contraste'
 cask 'dash' # quick documentation searches
 cask 'discord'
@@ -59,6 +60,7 @@ cask 'middle' # ex. three finger tap for middle click
 cask 'monodraw'
 cask 'numi' # lovely little notebook calculator
 cask 'qmk-toolbox'
+cask 'raycast'
 cask 'rocket' # slack-like emoji anywhere
 cask 'signal'
 cask 'slack'
