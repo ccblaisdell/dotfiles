@@ -7,6 +7,6 @@ echo "Copying from dotfiles repo to HOME directory"
 for file in "${FILES[@]}"
 do
   echo "$file"
-  cp "./$file" "$HOME/$file"
+  cp -R "./$file" "$HOME/$file"
 done
 echo "Finished updating dotfiles!"
