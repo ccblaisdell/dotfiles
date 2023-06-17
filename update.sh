@@ -7,7 +7,7 @@ echo "Copying safelisted files from home to dotfiles"
 for file in "${FILES[@]}"
 do
   echo "$file"
-  cp "$HOME/$file" "$HOME/dev/dotfiles/$file"
+  cp -R "$HOME/$file" "$HOME/dev/dotfiles/$file"
 done
 echo "Finished updating dotfiles!"
 
