@@ -19,6 +19,7 @@ alias bench='hyperfine'
 alias updots='sh ~/dev/dotfiles/update.sh'
 
 # Git
+
 alias cof="git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads | fzf --reverse --height 35% --nth 1 | awk '{print $1}' | xargs git checkout"
 alias gg="cof"
 alias gbc="git branch --show-current | tr -d '\n' | pbcopy"
@@ -27,6 +28,9 @@ git_delete_branches_grep() {
   git branch -D $(git branch | grep $1)
 }
 alias gbd="git_delete_branches_grep"
+# https://github.com/not-an-aardvark/git-delete-squashed
+alias git_delete_squashed='TARGET_BRANCH=master && git checkout -q $TARGET_BRANCH && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base $TARGET_BRANCH $branch) && [[ $(git cherry $TARGET_BRANCH $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
+alias gds="git_delete_squashed"
 
 # VIM
 alias vi="nvim"
@@ -47,3 +51,49 @@ alias ports="lsof -i -P | grep LISTEN"
 # Jira
 alias jira='!f() { open https://spiff.atlassian.net/browse/$(git rev-parse --abbrev-ref HEAD | sed '"'"'s/^.*\/\([a-zA-Z]+-\d+\).*/\1/'"'"'); }; f'
 
+
+# Guilherme's version, keeping it around for inspiration
+fzf-git-branch() {
+  git rev-parse HEAD > /dev/null 2>&1 || return
+
+  git branch --color=always --all --sort=-committerdate |
+    grep -v HEAD |
+    fzf --reverse --height 50% --ansi --no-multi --preview-window right:65% \
+      --preview 'git log -n 50 --no-merges --color=always --date=relative --pretty="format:%C(auto)%cd %h%d %s" master..$(sed "s/.* //" <<< {})' |
+    sed "s/.* //"
+}
+
+fzf-git-checkout() {
+  git rev-parse HEAD > /dev/null 2>&1 || return
+
+  local branch
+
+  branch=$(fzf-git-branch)
+  if [[ "$branch" = "" ]]; then
+    echo "No branch selected."
+    return
+  fi
+
+  # If branch name starts with 'remotes/' then it is a remote branch. By
+  # using --track and a remote branch name, it is the same as:
+  # git checkout -b branchName --track origin/branchName
+  if [[ "$branch" = 'remotes/'* ]]; then
+    git checkout --track $branch
+  else
+    git checkout $branch;
+  fi
+}
+
+alias gci=fzf-git-checkout
+
+## My version of Guilherme's
+
+fzf-git-branches() {
+  git branch --sort=-committerdate --format='%(refname:short)' |
+    fzf --reverse --height 35% --nth 1 --preview-window right:65% \
+      --preview 'git log -n 50 --color=always --no-merges --date=relative --pretty="format:%C(auto)%cd %s" master..$(sed "s/.* //" <<< {})' |
+    awk '{print $1}' |
+    xargs git checkout
+}
+
+alias ggg=fzf-git-branches

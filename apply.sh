@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copy files from $HOME into here
+# Copy files from here into $HOME
 source './files_to_sync.sh'
 
 echo "Copying from dotfiles repo to HOME directory"

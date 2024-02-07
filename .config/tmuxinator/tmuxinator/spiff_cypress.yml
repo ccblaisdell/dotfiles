@@ -1,0 +1,50 @@
+# /Users/ccblaisdell/.config/tmuxinator/spiff_cypress.yml
+
+name: spiff_cypress
+root: ~/
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+startup_window: apps
+
+windows:
+  - services:
+      layout: tiled
+      panes:
+        - db:
+          - pg_ctl start
+        - sidekiq:
+          # sidekiq needs to run _after_ the database is reset
+          - cd ~/dev/spiff_rb
+          - npx wait-on http://localhost:3001 && bundle exec sidekiq
+        - redis:
+          - cd ~/dev spiff_ex
+          - redis-server
+        - nats:
+          - nats-server --trace
+  - apps:
+      layout: tiled
+      panes:
+        - spiff_rb:
+          - cd ~/dev/spiff_rb
+          - sh ~/.spiff/reset_local_db.sh && CYPRESS_RUN=true bundle exec rails server -p 3001
+        - spiff_react:
+          - cd ~/dev/spiff_react
+          - npx wait-on http://localhost:3001 && PUBLIC_CYPRESS_RUN=true yarn dev
+        - spiff_ex:
+          - cd ~/dev/spiff_ex
+          - npx wait-on http://localhost:3001 && CYPRESS_RUN=true iex --name spiff_ex@127.0.0.1 -S mix phx.server
+        - mcfeely:
+          # - cd ~/dev/mcfeely
+          # - npx wait-on http://localhost:3001 && iex --name mcfeely@127.0.0.1 -S mix phx.server
+        - peg:
+          - cd ~/dev/peg
+          - npx wait-on http://localhost:3001 && CYPRESS_RUN=true iex --name peg@127.0.0.1 -S mix phx.server
+        - biff:
+          - cd ~/dev/biff
+          - npx wait-on http://localhost:3001 && CYPRESS_RUN=true iex --name biff@127.0.0.1 -S mix phx.server
+  - main:
+      root: ~/dev/spiff_react
+      layout: main-vertical
+      panes:
+        - clear
+
