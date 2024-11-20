@@ -2,6 +2,22 @@
 
 Right now this is mostly Mac-specific, but someday soon I will make it more linux-friendly!
 
+## How to
+
+To apply dotfiles from this repo to your computer. This is dangerous and will overwrite people you care about.
+
+```sh
+sh ~/dev/dotfiles/apply.sh
+# or downdots
+```
+
+To copy your local dotfile changes to this dotfiles directory for syncing to and from github.
+
+```sh
+sh ~/dev/dotfiles/update.sh
+# or updots
+```
+
 ## Todo
 
 - [ ] Document scripts

@@ -17,6 +17,7 @@ alias bench='hyperfine'
 
 # Dotfiles
 alias updots='sh ~/dev/dotfiles/update.sh'
+alias downdots='sh ~/dev/dotfiles/apply.sh'
 
 # Git
 
