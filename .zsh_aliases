@@ -2,10 +2,14 @@
 alias be='bundle exec'
 
 # Utils
-alias cat='bat'
-alias ls='exa'
+alias ccat='/bin/cat'
+alias ls='eza'
 alias tf='terraform'
 alias mux='tmuxinator'
+alias rgf='rg --files | rg'
+
+# Ctrl-Z to suspend a process, then again to resume it
+alias ^Z='fg'
 
 # Paths
 alias hosts='/private/etc/hosts'
@@ -17,7 +21,6 @@ alias bench='hyperfine'
 
 # Dotfiles
 alias updots='sh ~/dev/dotfiles/update.sh'
-alias downdots='sh ~/dev/dotfiles/apply.sh'
 
 # Git
 
@@ -29,9 +32,13 @@ git_delete_branches_grep() {
   git branch -D $(git branch | grep $1)
 }
 alias gbd="git_delete_branches_grep"
+alias ggd='gbd'
 # https://github.com/not-an-aardvark/git-delete-squashed
 alias git_delete_squashed='TARGET_BRANCH=master && git checkout -q $TARGET_BRANCH && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base $TARGET_BRANCH $branch) && [[ $(git cherry $TARGET_BRANCH $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 alias gds="git_delete_squashed"
+
+# Git Push Current
+alias gpc="git push --set-upstream origin $(git branch --show-current)"
 
 # VIM
 alias vi="nvim"
