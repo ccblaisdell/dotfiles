@@ -6,3 +6,6 @@
 
 # Spiff
 **/.env*
+
+# Don't worry about git submodules
+**/.git

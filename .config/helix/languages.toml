@@ -1,20 +1,15 @@
-[[language]]
-name = "typescript"
-formatter = { command = 'yarn run eslint', args = ["--fix"] }
-auto-format = true
+# Language configuration
+
+[language-server.elixir-lsp]
+command = "elixir-ls"
 
 [[language]]
-name = "tsx"
-formatter = { command = 'yarn run eslint', args = ["--fix"] }
+name = "elixir"
+scope = "source.elixir"
+injection-regex = "elixir"
+file-types = ["ex", "exs", "heex", "leex"]
+roots = ["mix.exs"]
 auto-format = true
-
-[[language]]
-name = "css"
-formatter = { command = 'yarn run eslint', args = ["--fix"] }
-auto-format = true
-
-[[language]]
-name = "scss"
-formatter = { command = 'yarn run eslint', args = ["--fix"] }
-auto-format = true
-
+diagnostic-severity = "Hint"
+indent = { tab-width = 2, unit = " " }
+language-servers = [ "elixir-lsp" ]
