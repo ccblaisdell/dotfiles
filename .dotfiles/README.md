@@ -17,3 +17,9 @@ To add something just use git add --force
 ```sh
 git add -f .vimrc
 ```
+
+## TODO:
+
+- [ ] Check in files in home directory
+- [ ] Figure out how to separate work stuff out of gh and git configs, then check them in
+- [ ] Clean up .spiff repo
