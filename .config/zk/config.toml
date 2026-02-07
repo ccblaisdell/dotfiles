@@ -1,0 +1,26 @@
+[notebook]
+dir = "~/dev/cyborg-brain"
+
+[note]
+filename = "{{slug title}}"
+
+[alias]
+e = 'zk edit --interactive --sort modified-'
+
+# nvim with <leader>dj
+journal = 'zk new --no-input $ZK_NOTEBOOK_DIR/journal'
+j = 'zk journal'
+
+# nvim with <leader>dw Work todos
+work = 'zk edit todo-work.md'
+w = 'zk work'
+
+# nvim with <leader>dt
+todo = 'zk edit todo.md'
+t = 'zk todo'
+
+# Edit the global zk config file
+config = '$EDITOR ~/.config/zk/config.toml'
+
+[tool]
+fzf-preview = 'bat -p --color always {-1}'
