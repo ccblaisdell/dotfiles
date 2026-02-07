@@ -58,14 +58,5 @@ alias gbd="git_delete_branches_grep"
 
 starship init fish | source
 
-# --- Stuff after this goes elsewhere
-
-# Work stuff
-source ~/.spiff/config.fish
-
-# Created by `pipx` on 2025-04-22 17:39:03
-set PATH $PATH /Users/ccblaisdell/.local/bin
-
-
-# Claude
-export NODE_EXTRA_CA_CERTS=$HOME/.certs/internal.pem
+# Work stuff all goes in here!
+source ~/.work/config.fish
