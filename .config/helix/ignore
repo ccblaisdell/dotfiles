@@ -1,0 +1,11 @@
+!.github/
+!.gitignore
+!.env*
+!.babel*
+!.eslint*
+!.prettier*
+!.strata*
+!.svgrc*
+.git
+# Just for the devops repo
+!private

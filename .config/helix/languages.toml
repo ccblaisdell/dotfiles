@@ -1,0 +1,15 @@
+# Language configuration
+
+[language-server.elixir-lsp]
+command = "elixir-ls"
+
+[[language]]
+name = "elixir"
+scope = "source.elixir"
+injection-regex = "elixir"
+file-types = ["ex", "exs", "heex", "leex"]
+roots = ["mix.exs"]
+auto-format = true
+diagnostic-severity = "hint"
+indent = { tab-width = 2, unit = " " }
+language-servers = [ "elixir-lsp" ]
