@@ -1,0 +1,6 @@
+# Helps rg still search despite the "*" in ~/.gitignore
+!*
+.git/
+.asdf
+.bundle
+**/.yarn/releases
