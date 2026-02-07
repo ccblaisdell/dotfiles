@@ -2,7 +2,7 @@
 
 Right now this is mostly Mac-specific, but someday soon I will make it more linux-friendly!
 
-## How to
+## How to set up a new machine
 
 ```sh
 cd ~
@@ -10,6 +10,16 @@ git init
 git remote add origin git@github.com:ccblaisdell/dotfiles.git
 git fetch
 git checkout -f main
+
+# Set up work stuff if needed...
+
+# Install brew stuff
+## personal
+brew bundle --file=~/.dotfiles/Brewfile-personal
+## work
+brew bundle --file=~/.work/Brewfile-work
+
+# Set up mac preferences
 ```
 
 To add something just use git add --force
@@ -20,6 +30,6 @@ git add -f .vimrc
 
 ## TODO:
 
-- [ ] Check in files in home directory
+- [ ] Remove falcon completions from repo
 - [ ] Figure out how to separate work stuff out of gh and git configs, then check them in
 - [ ] Clean up .spiff repo

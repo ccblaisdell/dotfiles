@@ -1,0 +1,8 @@
+# Include shared brew stuff
+instance_eval(File.read("~/.dotfiles/Brewfile-core"))
+
+brew 'qmk'
+
+# Apps
+cask 'qmk-toolbox'
+cask 'steam'
