@@ -1,11 +1,1 @@
-.tool-versions
-**/.tool-versions
-
-.DS_Store
-**/.DS_Store
-
-# Spiff
-**/.env*
-
-# Don't worry about git submodules
-**/.git
+*
