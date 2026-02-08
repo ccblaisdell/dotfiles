@@ -35,9 +35,3 @@ To add something just use git add --force
 ```sh
 git add -f .vimrc
 ```
-
-## TODO:
-
-- [ ] Remove falcon completions from repo
-- [ ] Figure out how to separate work stuff out of gh and git configs, then check them in
-- [ ] Clean up .spiff repo
