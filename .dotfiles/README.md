@@ -11,6 +11,14 @@ git remote add origin git@github.com:ccblaisdell/dotfiles.git
 git fetch
 git checkout -f main
 
+# Add this to ~/.gitconfig
+
+```yml
+[include]
+    path = ~/.gitconfig-common
+# Work or personal stuff
+```
+
 # Set up work stuff if needed...
 
 # Install brew stuff
