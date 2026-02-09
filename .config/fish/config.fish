@@ -59,4 +59,4 @@ alias gbd="git_delete_branches_grep"
 starship init fish | source
 
 # Work stuff all goes in here!
-source ~/.work/config.fish
+test -f ~/.work/config.fish; and source ~/.work/config.fish
