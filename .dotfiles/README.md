@@ -10,8 +10,9 @@ git init
 git remote add origin git@github.com:ccblaisdell/dotfiles.git
 git fetch
 git checkout -f main
+```
 
-# Add this to ~/.gitconfig
+Add this to ~/.gitconfig
 
 ```yml
 [include]
