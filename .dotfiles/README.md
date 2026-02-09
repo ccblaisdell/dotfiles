@@ -20,6 +20,7 @@ Add this to ~/.gitconfig
 # Work or personal stuff
 ```
 
+```sh
 # Set up work stuff if needed...
 
 # Install brew stuff
