@@ -1,5 +1,50 @@
 # Helps rg still search despite the "*" in ~/.gitignore
 !*
+
+# System and application directories (prevents Helix from indexing everything)
+Library/
+Applications/
+.Trash/
+.cache/
+.npm/
+.cargo/registry/
+.cargo/git/
+.rustup/
+.docker/
+
+# Development noise
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+target/
+build/
+dist/
+
+# Large directories
+Downloads/
+Documents/
+Desktop/
+Pictures/
+Movies/
+Music/
+Public/
+
+# Cloud storage
+Dropbox/
+Google Drive/
+OneDrive/
+
+# IDE and editor
+.vscode/
+.idea/
+.DS_Store
+
+# Git directories (don't recurse into them)
 .git/
 .asdf
 .bundle

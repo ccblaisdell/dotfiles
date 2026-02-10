@@ -2,9 +2,11 @@ format = """
 $username\
 $hostname\
 $directory\
+$env_var\
 $git_branch\
 $git_state\
 $git_status\
+$git_metrics\
 $cmd_duration\
 $line_break\
 $python\
@@ -21,6 +23,12 @@ vimcmd_symbol = "[❮](green)"
 [git_branch]
 format = "[$branch]($style)"
 style = "bright-black"
+
+[git_metrics]
+disabled = false
+format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+added_style = "green"
+deleted_style = "red"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
@@ -44,3 +52,8 @@ style = "yellow"
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-black"
+
+[env_var.GIT_REPO_CONTEXT]
+format = "[$env_value]($style) "
+style = "bright-yellow bold"
+variable = "GIT_REPO_CONTEXT"

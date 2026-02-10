@@ -56,6 +56,52 @@ end
 
 alias gbd="git_delete_branches_grep"
 
+# Show which git repo you're currently in
+function git_repo_root
+    set -l git_dir (git rev-parse --git-dir 2>/dev/null)
+    if test -n "$git_dir"
+        set -l repo_root (git rev-parse --show-toplevel 2>/dev/null)
+        set -l remote (git config --get remote.origin.url 2>/dev/null)
+
+        if test "$repo_root" = "$HOME"
+            echo "📍 Home dotfiles repo"
+        else if test "$repo_root" = "$HOME/.work"
+            echo "💼 Work dotfiles repo"
+        else
+            echo "📁 Repo: $repo_root"
+        end
+
+        if test -n "$remote"
+            echo "   Remote: $remote"
+        end
+    else
+        echo "Not in a git repository"
+    end
+end
+
+alias gr="git_repo_root"
+alias where="git_repo_root"
+
+# Set a variable to indicate which repo context we're in for the prompt
+function set_git_context --on-variable PWD
+    set -l git_dir (git rev-parse --git-dir 2>/dev/null)
+    if test -n "$git_dir"
+        set -l repo_root (git rev-parse --show-toplevel 2>/dev/null)
+        if test "$repo_root" = "$HOME/.work"
+            set -gx GIT_REPO_CONTEXT "work"
+        else if test "$repo_root" = "$HOME"
+            set -gx GIT_REPO_CONTEXT "home"
+        else
+            set -e GIT_REPO_CONTEXT
+        end
+    else
+        set -e GIT_REPO_CONTEXT
+    end
+end
+
+# Run once on startup
+set_git_context
+
 starship init fish | source
 
 # Work stuff all goes in here!

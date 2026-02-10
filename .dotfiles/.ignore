@@ -1,0 +1,2 @@
+# When in ~/.dotfiles, don't walk up to ~ for file picking
+# This helps Helix and other tools stay scoped to this directory
