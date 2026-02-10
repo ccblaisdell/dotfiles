@@ -1,8 +1,5 @@
 [include]
     path = ~/.gitconfig-common
     path = ~/.work/.gitconfig
-[credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
-
 [user]
 	name = Colby Blaisdell
