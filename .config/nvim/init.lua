@@ -85,6 +85,12 @@ later(function() require("core/lsp") end)
 later(function() require("core/auto_format_on_save") end)
 later(function() require("extra/zk") end)
 
+-- Load work-specific config if it exists
+local work_config = vim.fn.expand("~/.work/init-work.lua")
+if vim.fn.filereadable(work_config) == 1 then
+  dofile(work_config)
+end
+
 -- At launch
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function() 
