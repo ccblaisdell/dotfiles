@@ -1,14 +1,6 @@
 # Default to personal profile, but override based on other directories
 [include]
     path = ~/.gitconfig-personal
-
-[includeIf "gitdir:~/dev/"]
-    path = ~/.work/.gitconfig
-[includeIf "gitdir:~/.work/"]
-    path = ~/.work/.gitconfig
-[includeIf "gitdir:~/personal/"]
-    path = ~/.gitconfig-personal
-
 [user]
 	name = Colby Blaisdell
 [core]
@@ -58,3 +50,11 @@
 	autoupdate = true
  
 # Some suggestions from https://blog.gitbutler.com/how-git-core-devs-configure-git/
+
+# Contextual overrides
+[includeIf "gitdir:~/dev/"]
+    path = ~/.work/.gitconfig
+[includeIf "gitdir:~/.work/"]
+    path = ~/.work/.gitconfig
+[includeIf "gitdir:~/personal/"]
+    path = ~/.gitconfig-personal

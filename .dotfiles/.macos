@@ -69,8 +69,8 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 10
-defaults write NSGlobalDomain InitialKeyRepeat -int 400
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Stop iTunes from responding to the keyboard media keys
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
@@ -301,6 +301,11 @@ defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
 ###############################################################################
+# Change default shell to fish
+###############################################################################
+chsh -s $(which fish)
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
@@ -313,6 +318,6 @@ for app in "Dock" "Finder" "SystemUIServer" "Rectangle"; do
 done
 
 # Fix zsh completions complaining about insecure files
-compaudit | xargs chmod g-w
+# compaudit | xargs chmod g-w
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."

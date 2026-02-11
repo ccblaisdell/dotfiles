@@ -70,3 +70,9 @@ To add something use git add --force:
 ```sh
 git add -f .vimrc
 ```
+
+## SSH, Git, and 1Pass
+
+- If using 1password for ssh-agent config on a machine with more than 1 set of keys,
+  you must use its tools to provide the personal identity first.
+
