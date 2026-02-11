@@ -1,7 +1,3 @@
-# Ensure homebrew is loaded so everything it installs is available
-set brewcmd (path filter /opt/homebrew/bin/brew /usr/local/bin/brew)[1]
-and $brewcmd shellenv | source
-
 # ASDF configuration code
 if test -z $ASDF_DATA_DIR
     set _asdf_shims "$HOME/.asdf/shims"

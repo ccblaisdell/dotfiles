@@ -1,4 +1,4 @@
-command = /usr/homebrew/bin/fish --login --interactive
+command = /opt/homebrew/bin/fish --login --interactive
 
 window-padding-x = 16
 window-padding-y = 8
