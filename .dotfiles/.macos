@@ -317,6 +317,54 @@ fi
 
 
 ###############################################################################
+# Login Items                                                                 #
+###############################################################################
+
+# Function to add app to Login Items if installed and not already present
+add_login_item() {
+    local app_name="$1"
+    local app_path=""
+
+    # Check common locations for the app
+    if [ -d "/Applications/${app_name}.app" ]; then
+        app_path="/Applications/${app_name}.app"
+    elif [ -d "$HOME/Applications/${app_name}.app" ]; then
+        app_path="$HOME/Applications/${app_name}.app"
+    else
+        echo "Skipping ${app_name}: Not installed"
+        return
+    fi
+
+    # Check if already in Login Items
+    local in_login_items=$(osascript -e "tell application \"System Events\" to get the name of every login item" 2>/dev/null | grep -i "${app_name}")
+
+    if [ -n "$in_login_items" ]; then
+        echo "Skipping ${app_name}: Already in Login Items"
+        return
+    fi
+
+    # Add to Login Items
+    osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"${app_path}\", hidden:false}" 2>/dev/null
+
+    if [ $? -eq 0 ]; then
+        echo "Added ${app_name} to Login Items"
+    else
+        echo "Failed to add ${app_name} to Login Items"
+    fi
+}
+
+# Add apps to Login Items
+echo "Adding applications to Login Items..."
+add_login_item "1Password"
+add_login_item "CleanShot X"
+add_login_item "MeetingBar"
+add_login_item "Middle"
+add_login_item "MuteMe-Client"
+add_login_item "Raycast"
+add_login_item "Rocket"
+add_login_item "Dato"
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
