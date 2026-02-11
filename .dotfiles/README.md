@@ -8,38 +8,55 @@ This repo contains public/personal configurations. Work-specific configs live in
 
 ### Setup on New Machine
 
-1. Clone and setup personal dotfiles:
-```sh
-cd ~
-git init
-git remote add origin git@github.com-ccblaisdell:ccblaisdell/dotfiles.git
-git fetch
-git checkout -f main
-```
+**IMPORTANT**: Before cloning repos, you must configure SSH and Git for multi-account support. See detailed instructions in [ssh_config.md](./ssh_config.md).
 
-Add this to ~/.gitconfig
+#### Quick Setup Summary
 
-```yml
-[include]
-    path = ~/.gitconfig-common
-# Work or personal stuff
-```
+1. **Configure 1Password SSH Agent** (see [ssh_config.md](./ssh_config.md) for details):
+   - Export public keys from 1Password to `~/.ssh/id_personal.pub` and `~/.ssh/id_work.pub`
+   - Configure `~/.config/1Password/ssh/agent.toml`
+   - Set up `~/.ssh/config` with host aliases
 
-```sh
-# Set up work stuff if needed...
-brew bundle --file ~/.dotfiles/Brewfile
-```
+2. **Configure Git Identity Files**:
+   - Create `~/.gitconfig-personal-identity` with personal email and signing key
+   - Create `~/.gitconfig-personal-urls` with URL rewrite rule
+   - See [ssh_config.md](./ssh_config.md) for exact file contents
 
-2. Clone work repo (optional):
-```sh
-git clone git@git.soma.salesforce.com:cblaisdell/dotfiles.git ~/.work
-brew bundle --file ~/.work/Brewfile
-```
+3. **Clone personal dotfiles to home directory**:
+   ```sh
+   cd ~
+   git init
+   git remote add origin git@github-personal:ccblaisdell/dotfiles.git
+   git fetch
+   git checkout -f main
+   ```
 
-3. Set up mac preferences:
-```sh
-source ~/.dotfiles/.macos
-```
+   Note: Uses `git@github-personal:` to ensure personal SSH key is used.
+
+4. **Install packages**:
+   ```sh
+   brew bundle --file ~/.dotfiles/Brewfile
+   ```
+
+5. **Clone work repo** (optional):
+   ```sh
+   git clone git@git.soma.salesforce.com:cblaisdell/dotfiles.git ~/.work
+   brew bundle --file ~/.work/Brewfile
+   ```
+
+6. **Set up macOS preferences**:
+   ```sh
+   source ~/.dotfiles/.macos
+   ```
+
+7. **Verify multi-account setup** (see [ssh_config.md](./ssh_config.md) for testing commands):
+   ```sh
+   # Test work directory uses work identity
+   cd ~/dev && git config user.email
+
+   # Test personal directory uses personal identity
+   cd ~/personal && git config user.email
+   ```
 
 ### Extension Pattern
 

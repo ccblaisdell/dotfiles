@@ -1,6 +1,4 @@
 # Default to personal profile, but override based on other directories
-[include]
-    path = ~/.gitconfig-personal
 [user]
 	name = Colby Blaisdell
 [core]
@@ -50,9 +48,26 @@
 # Some suggestions from https://blog.gitbutler.com/how-git-core-devs-configure-git/
 
 # Contextual overrides
+# Personal identity by default for all of ~/
+[includeIf "gitdir:~/"]
+    path = ~/.gitconfig-personal-identity
+
+# Work overrides (identity only) for specific work directories
 [includeIf "gitdir:~/dev/"]
     path = ~/.work/.gitconfig
 [includeIf "gitdir:~/.work/"]
     path = ~/.work/.gitconfig
+[includeIf "gitdir:~/.yak/"]
+    path = ~/.work/.gitconfig
+
+# Personal URL rewrites for personal repos only
+# Match home directory repo specifically (not subdirectories)
+[includeIf "gitdir:~/.git"]
+    path = ~/.gitconfig-personal-urls
 [includeIf "gitdir:~/personal/"]
-    path = ~/.gitconfig-personal
+    path = ~/.gitconfig-personal-urls
+
+[credential "https://github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
