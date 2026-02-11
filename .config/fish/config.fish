@@ -1,9 +1,3 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-    # TODO: Still need this if we use onepass for ssh?
-    ssh-add --apple-load-keychain
-end
-
 # Ensure homebrew is loaded so everything it installs is available
 set brewcmd (path filter /opt/homebrew/bin/brew /usr/local/bin/brew)[1]
 and $brewcmd shellenv | source
@@ -88,9 +82,9 @@ function set_git_context --on-variable PWD
     if test -n "$git_dir"
         set -l repo_root (git rev-parse --show-toplevel 2>/dev/null)
         if test "$repo_root" = "$HOME/.work"
-            set -gx GIT_REPO_CONTEXT "work"
+            set -gx GIT_REPO_CONTEXT work
         else if test "$repo_root" = "$HOME"
-            set -gx GIT_REPO_CONTEXT "home"
+            set -gx GIT_REPO_CONTEXT home
         else
             set -e GIT_REPO_CONTEXT
         end
