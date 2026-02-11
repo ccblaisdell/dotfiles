@@ -1,5 +1,60 @@
+# Default to personal profile, but override based on other directories
 [include]
-    path = ~/.gitconfig-common
+    path = ~/.gitconfig-personal
+
+[includeIf "gitdir:~/dev/"]
     path = ~/.work/.gitconfig
+[includeIf "gitdir:~/.work/"]
+    path = ~/.work/.gitconfig
+[includeIf "gitdir:~/personal/"]
+    path = ~/.gitconfig-personal
+
 [user]
 	name = Colby Blaisdell
+[core]
+	excludesfile = ~/.gitignore
+[alias]
+	# Current working tree in short format
+	s = status -s
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[pull]
+	rebase = true
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[help]
+	autocorrect = prompt
+[commit]
+	gpgsign = true
+	verbose = true
+[rerere]
+	enabled = true
+	autoupdate = true
+ 
+# Some suggestions from https://blog.gitbutler.com/how-git-core-devs-configure-git/
