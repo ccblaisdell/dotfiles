@@ -34,7 +34,7 @@ vim.api.nvim_set_keymap("n", "<leader>vt", "<Cmd>ZkTags<CR>", { desc = 'Open Not
 
 -- Open specific files
 vim.keymap.set('n', '<leader>vj', "<Cmd>ZkNew { dir = 'journal' }<CR>", { desc = 'Open Journal', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>vw', function() vim.cmd('edit ~/dev/cyborg-brain/todo-work.md') end, { desc = 'Open Work Todos', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>vw', function() vim.cmd('edit ~/personal/notes/todo-work.md') end, { desc = 'Open Work Todos', noremap = true, silent = true })
 
 -- Search
 vim.api.nvim_set_keymap("n", "<leader>v/", "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>", { desc = 'Search Notes' })

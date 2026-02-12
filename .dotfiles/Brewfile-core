@@ -34,6 +34,7 @@ brew 'yaml-language-server'
 brew 'yazi'
 brew 'yq'
 brew 'z'
+brew 'zk'
 brew 'zsh'
 brew 'zsh-autosuggestions'
 

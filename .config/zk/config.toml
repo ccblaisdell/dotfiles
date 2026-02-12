@@ -1,5 +1,5 @@
 [notebook]
-dir = "~/dev/cyborg-brain"
+dir = "~/personal/notes"
 
 [note]
 filename = "{{slug title}}"

@@ -18,7 +18,7 @@ set --erase _asdf_shims
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export EDITOR="hx"
-export ZK_NOTEBOOK_DIR="/Users/ccblaisdell/dev/cyborg-brain"
+export ZK_NOTEBOOK_DIR="$HOME/personal/notes"
 
 # Direnv hook
 direnv hook fish | source
