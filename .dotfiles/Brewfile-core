@@ -40,7 +40,6 @@ brew 'zsh-autosuggestions'
 
 # Apps
 cask 'caffeine' # keep your machine awake
-cask 'cleanshot'
 cask 'discord'
 cask 'docker'
 cask 'ghostty'
@@ -53,6 +52,7 @@ cask 'middle' # ex. three finger tap for middle click
 cask 'muteme'
 cask 'raycast'
 cask 'rocket' # slack-like emoji anywhere
+cask 'shottr'
 
 # Fonts
 cask 'font-lato'
