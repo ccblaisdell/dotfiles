@@ -13,3 +13,23 @@ auto-format = true
 diagnostic-severity = "hint"
 indent = { tab-width = 2, unit = " " }
 language-servers = [ "elixir-lsp" ]
+
+[[language]]
+name = "javascript"
+auto-format = true
+
+[[language]]
+name = "jsx"
+auto-format = true
+
+[[language]]
+name = "ruby"
+auto-format = true
+
+[[language]]
+name = "tsx"
+auto-format = true
+
+[[language]]
+name = "typescript"
+auto-format = true
