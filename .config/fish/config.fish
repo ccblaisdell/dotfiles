@@ -96,3 +96,6 @@ starship init fish | source
 
 # Work stuff all goes in here!
 test -f ~/.work/config.fish; and source ~/.work/config.fish
+
+# Secrets
+test -f ~/.env; and source ~/.env

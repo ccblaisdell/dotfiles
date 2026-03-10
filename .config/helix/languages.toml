@@ -2,6 +2,10 @@
 
 [language-server.elixir-lsp]
 command = "elixir-ls"
+ 
+[[language]]
+name = "bash"
+file-types = ["sh", "bash", "bats", "cgi", "command", "env"]
 
 [[language]]
 name = "elixir"
