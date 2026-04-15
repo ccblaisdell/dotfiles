@@ -52,12 +52,5 @@ ssh-add --apple-load-keychain
 # Ctrl+R to fuzzy search command history
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Added by dx-cli for Claude Code (native binary installation)
 export PATH="$HOME/.local/bin:$PATH"
 
-# Added by dx-cli for Claude Code CA certificates
-export NODE_EXTRA_CA_CERTS="/Users/ccblaisdell/.claude/certs/salesforce-ca-bundle.pem"
-
-# >>> aisuite >>>
-[ -f "/Users/ccblaisdell/.aisuite/env.sh" ] && source "/Users/ccblaisdell/.aisuite/env.sh"
-# <<< aisuite <<<
