@@ -1,0 +1,1 @@
+bind blame C !@sh -c "gh browse $(git rev-parse %(commit))"
