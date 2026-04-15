@@ -3,4 +3,12 @@ command = /opt/homebrew/bin/fish --login --interactive
 theme = catppuccin-mocha
 
 font-family = "Maple Mono"
+
+# Shift enter for newline
 keybind = shift+enter=text:\x1b\r
+
+# Split Navigation
+keybind = super+j=goto_split:down
+keybind = super+k=goto_split:up
+keybind = super+h=goto_split:left
+keybind = super+l=goto_split:right
