@@ -1,21 +1,19 @@
 local add = MiniDeps.add
 
 -- Treesitter
-add({ source = 'nvim-treesitter/nvim-treesitter' })
-require("nvim-treesitter").setup({ build = ":TSUpdate" })
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { "elixir", "eex", "heex", "terraform", "helm", "typescript" },
-  highlight = {
-    additional_vim_regex_highlighting = false,
-    enable = true,
-  },
+add({
+  source = 'nvim-treesitter/nvim-treesitter',
+  hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+})
+require('nvim-treesitter').setup()
+require('nvim-treesitter').install({ "elixir", "eex", "heex", "terraform", "helm", "typescript" })
 
-  indent = { enable = true },
-
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
-}
+-- Treesitter highlighting (built into Neovim, just needs enabling)
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
 
 -- Soft tabs, 2 spaces
 vim.opt.tabstop = 2
