@@ -1,69 +1,76 @@
--- From https://lsp-zero.netlify.app/docs/getting-started.html
---
-
--- LSPs
-MiniDeps.add({source = 'VonHeikemen/lsp-zero.nvim', checkout = 'v4.x'})
-MiniDeps.add({source = 'neovim/nvim-lspconfig'})
+-- Completion
 MiniDeps.add({ source = "saghen/blink.cmp", checkout = "v0.13.0" })
 
--- Reserve a space in the gutter
--- This will avoid an annoying layout shift in the screen
+-- Reserve gutter space
 vim.opt.signcolumn = 'yes'
 
 -- Disable virtual text
-vim.diagnostic.config({
-  virtual_text = false,
-})
+vim.diagnostic.config({ virtual_text = false })
 
--- Languages
---
--- Add blink.cmp capabilities settings to lspconfig
--- This should be executed before you configure any language server
-local lspconfig_defaults = require('lspconfig').util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lspconfig_defaults.capabilities,
-  require('blink.cmp').get_lsp_capabilities()
-)
+-- blink.cmp setup
 require('blink.cmp').setup({
-  -- Don't show completion menu automatically in cmdline mode
-  completion = { 
+  completion = {
     menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end }
   },
   keymap = { preset = 'enter' },
   signature = { enabled = true },
   sources = {
-    default = { 'lsp', 'path', 'snippets' }, -- 'buffer'
+    default = { 'lsp', 'path', 'snippets' },
   },
 })
 
-local lspconfig = require('lspconfig')
+-- Inject blink.cmp capabilities into all LSP clients
+vim.lsp.config('*', {
+  capabilities = require('blink.cmp').get_lsp_capabilities(),
+})
 
-lspconfig.elixirls.setup({
-  cmd = { "/opt/homebrew/bin/elixir-ls" }
+-- LSP server configs
+vim.lsp.config('elixirls', {
+  cmd = { '/opt/homebrew/bin/elixir-ls' },
+  filetypes = { 'elixir', 'eex', 'heex' },
+  root_markers = { 'mix.exs', '.git' },
 })
-lspconfig.ts_ls.setup({
-  single_file_support = true
+
+vim.lsp.config('ts_ls', {
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
+  root_markers = { 'tsconfig.json', 'package.json', '.git' },
 })
-lspconfig.ruby_lsp.setup({})
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#eslint
-lspconfig.eslint.setup({
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
+
+vim.lsp.config('ruby_lsp', {
+  cmd = { 'ruby-lsp' },
+  filetypes = { 'ruby' },
+  root_markers = { 'Gemfile', '.git' },
+})
+
+vim.lsp.config('eslint', {
+  cmd = { 'vscode-eslint-language-server', '--stdio' },
+  filetypes = { 'javascript', 'typescript', 'typescriptreact', 'javascriptreact' },
+  root_markers = { '.eslintrc', '.eslintrc.js', '.eslintrc.json', 'eslint.config.js', 'eslint.config.mjs', 'package.json' },
+})
+
+vim.lsp.config('terraformls', {
+  cmd = { 'terraform-ls', 'serve' },
+  filetypes = { 'terraform' },
+  root_markers = { '.terraform', '.git' },
+})
+
+vim.lsp.enable({ 'elixirls', 'ts_ls', 'ruby_lsp', 'eslint', 'terraformls' })
+
+-- Auto-fix eslint on save
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client and client.name == 'eslint' then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        buffer = ev.buf,
+        callback = function()
+          vim.lsp.buf.code_action({
+            context = { only = { 'source.fixAll.eslint' } },
+            apply = true,
+          })
+        end,
+      })
+    end
   end,
 })
-
--- Helm/Terraform
--- MiniDeps.add({ source = 'towolf/vim-helm' })
--- lspconfig.yamlls.setup({})
--- lspconfig.helm_ls.setup({
---   -- ['helm-ls'] = {
---   --   yamlls = {
---   --     path = 'yaml-language-server'
---   --   }
---   -- }
--- })
-lspconfig.terraformls.setup({})
