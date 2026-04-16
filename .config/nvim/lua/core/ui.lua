@@ -5,8 +5,9 @@ add({
   source = 'nvim-treesitter/nvim-treesitter',
   hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
 })
-require('nvim-treesitter').setup()
-require('nvim-treesitter').install({ "elixir", "eex", "heex", "terraform", "helm", "typescript" })
+require('nvim-treesitter').setup({
+  ensure_installed = { "elixir", "eex", "heex", "terraform", "helm", "typescript" },
+})
 
 -- Treesitter highlighting (built into Neovim, just needs enabling)
 vim.api.nvim_create_autocmd("FileType", {
