@@ -13,6 +13,7 @@ brew 'git'
 brew 'grep'
 brew 'helix'
 brew 'jq'
+brew 'lazygit'
 brew 'mas' # Mac App Store manager
 brew 'neovim'
 brew 'openssh'
