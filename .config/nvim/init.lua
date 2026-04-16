@@ -33,25 +33,6 @@ add({
   }
 })
 
-now(function()
-  -- this one is a PR with a performance fix for fish
-  add({ source = 'srithon/nvim-tmux-navigation' })
-  local vim_tmux_nav = require('nvim-tmux-navigation')
-
-  vim_tmux_nav.setup({
-    -- disable_when_zoomed = true, -- defaults to false
-
-    -- for the nvim version
-    keybindings = {
-      left = "<C-h>",
-      down = "<C-j>",
-      up = "<C-k>",
-      right = "<C-l>",
-      last_active = "<C-\\>",
-      next = "<C-Space>",
-    }
-  })
-end)
 
 --later
 later(function()
