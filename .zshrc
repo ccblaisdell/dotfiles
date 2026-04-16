@@ -1,6 +1,6 @@
 # Config
 
-export EDITOR="vim"
+export EDITOR="nvim"
 export GOKU_EDN_CONFIG_FILE="/Users/ccblaisdell/dev/dotfiles/karabiner.edn"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 

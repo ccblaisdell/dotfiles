@@ -17,7 +17,7 @@ set -gx --prepend PATH $_asdf_shims
 set --erase _asdf_shims
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
-export EDITOR="hx"
+export EDITOR="nvim"
 export ZK_NOTEBOOK_DIR="$HOME/personal/notes"
 
 # Direnv hook
