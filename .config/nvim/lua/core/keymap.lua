@@ -40,13 +40,21 @@ end, { desc = 'Jumplist' })
 
 vim.keymap.set('n', '<space>\'', MiniPick.builtin.resume, { desc = 'Resume last picker' })
 
+-- Helix-style goto bindings
+vim.keymap.set({'n', 'x'}, 'gh', '0', { desc = 'Goto line start' })
+vim.keymap.set({'n', 'x'}, 'gl', '$', { desc = 'Goto line end' })
+vim.keymap.set({'n', 'x'}, 'ge', 'G', { desc = 'Goto last line' })
+vim.keymap.set({'n', 'x'}, 'gt', 'gg', { desc = 'Goto first line' })
+
 -- Show git blame from snacks.nvim
 vim.keymap.set('n', 'gb', function()
   Snacks.git.blame_line()
 end)
 
--- Copy to system clipboard
+-- Helix-style clipboard bindings
 vim.keymap.set({ 'n', 'x' }, '<space>y', '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set({ 'n', 'x' }, '<space>p', '"+p', { desc = 'Paste from clipboard (after)' })
+vim.keymap.set({ 'n', 'x' }, '<space>P', '"+P', { desc = 'Paste from clipboard (before)' })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
