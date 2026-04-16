@@ -5,7 +5,7 @@
 
 vim.g.mapleader = ' '
 
-vim.keymap.set('n', '<space>w', '<C-w>', { desc = 'Window mode' })
+vim.keymap.set('n', '<space>w', '<C-w>', { desc = 'Window mode', remap = true })
 
 -- Stay in visual mode if indenting in visual mode
 vim.keymap.set("x", "<", "<gv")
@@ -17,21 +17,27 @@ vim.keymap.set('n', '<space>f', function()
   local tool = vim.fn.isdirectory('.git') == 1 and 'git' or 'rg'
   MiniPick.builtin.files({ tool = tool })
 end, { desc = 'Find files' })
+
 vim.keymap.set('n', '<space>g', function()
   -- Changed files
   MiniExtra.pickers.git_files({ scope = "modified" })
 end, { desc = 'Changed files' })
+
 vim.keymap.set('n', '<space>?', function()
   MiniExtra.pickers.commands()
 end, { desc = 'Command palette' })
-vim.keymap.set('n', '<space>F', function()
+
+vim.keymap.set('n', '<space>e', function()
   MiniFiles.open(vim.api.nvim_buf_get_name(0))
 end, { desc = 'File explorer' })
+
 vim.keymap.set('n', '<space>b', MiniPick.builtin.buffers, { desc = 'Buffers' })
 vim.keymap.set('n', '<space>/', MiniPick.builtin.grep_live, { desc = 'Find' })
+
 vim.keymap.set('n', '<space>j', function()
   MiniExtra.pickers.list({ scope = "jump" })
 end, { desc = 'Jumplist' })
+
 vim.keymap.set('n', '<space>\'', MiniPick.builtin.resume, { desc = 'Resume last picker' })
 
 -- Show git blame from snacks.nvim
