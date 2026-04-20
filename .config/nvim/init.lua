@@ -1,41 +1,45 @@
--- Ensure mini.nvim is installed and up to date
-local path_package = vim.fn.stdpath('data') .. '/site'
-local mini_path = path_package .. '/pack/deps/start/mini.nvim'
-if not vim.uv.fs_stat(mini_path) then
-  vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local clone_cmd = {
-    'git', 'clone', '--filter=blob:none',
-    -- Uncomment next line to use 'stable' branch
-    -- '--branch', 'stable',
-    'https://github.com/echasnovski/mini.nvim', mini_path
-  }
-  vim.fn.system(clone_cmd)
-  vim.cmd('packadd mini.nvim | helptags ALL')
-  vim.cmd('echo "Installed `mini.nvim`" | redraw')
+-- Bootstrap plugins into vim.pack (pack/plugins/start)
+local plugins = {
+  { name = 'mini.nvim', url = 'https://github.com/echasnovski/mini.nvim' },
+  { name = 'snacks.nvim', url = 'https://github.com/folke/snacks.nvim' },
+  { name = 'nvim-treesitter', url = 'https://github.com/nvim-treesitter/nvim-treesitter' },
+  { name = 'blink.cmp', url = 'https://github.com/saghen/blink.cmp', tag = 'v0.13.0' },
+  { name = 'poimandres.nvim', url = 'https://github.com/olivercederborg/poimandres.nvim' },
+  { name = 'catppuccin', url = 'https://github.com/catppuccin/nvim' },
+  { name = 'zk-nvim', url = 'https://github.com/zk-org/zk-nvim' },
+}
+
+local pack_path = vim.fn.stdpath('data') .. '/site/pack/plugins/start'
+local any_installed = false
+for _, plugin in ipairs(plugins) do
+  local install_path = pack_path .. '/' .. plugin.name
+  if not vim.uv.fs_stat(install_path) then
+    any_installed = true
+    vim.cmd('echo "Installing ' .. plugin.name .. '" | redraw')
+    local cmd = { 'git', 'clone', '--filter=blob:none' }
+    if plugin.tag then
+      table.insert(cmd, '--branch')
+      table.insert(cmd, plugin.tag)
+    end
+    table.insert(cmd, plugin.url)
+    table.insert(cmd, install_path)
+    vim.fn.system(cmd)
+  end
+end
+if any_installed then
+  vim.cmd('packloadall | helptags ALL')
 end
 
--- Setup
-require("mini.deps").setup()
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+-- Eager setup
+require("core/ui")
+require("mini.basics").setup()
+require("mini.pick").setup()
+require("mini.statusline").setup()
+require("core/theme")
+require("core/keymap")
 
--- now
-now(function() require("core/ui") end)
-now(function() require("mini.basics").setup() end)
-now(function() require("mini.pick").setup() end)
-now(function() require("mini.statusline").setup() end)
-now(function() require("core/theme") end)
-now(function() require("core/keymap") end)
-
-add({
-  source = 'folke/snacks.nvim',
-  opts = {
-    git = { enabled = "true" }
-  }
-})
-
-
---later
-later(function()
+-- Deferred setup
+vim.schedule(function()
   require("mini.comment").setup({
     mappings = {
       comment = '<space>c',
@@ -44,10 +48,8 @@ later(function()
       text_object = '<space>c',
     }
   })
-end)
-later(function() require("mini.diff").setup() end)
-later(function() require("mini.extra").setup() end)
-later(function()
+  require("mini.diff").setup()
+  require("mini.extra").setup()
   require("mini.files").setup({
     mappings = {
       synchronize = "-" -- default "="
@@ -56,15 +58,15 @@ later(function()
       use_as_default_explorer = false
     }
   })
+  require("mini.git").setup()
+  require("mini.pairs").setup()
+  require("mini.notify").setup()
+  require("mini.trailspace").setup()
+  require("core/clue")
+  require("core/lsp")
+  require("core/auto_format_on_save")
+  require("extra/zk")
 end)
-later(function() require("mini.git").setup() end)
-later(function() require("mini.pairs").setup() end)
-later(function() require("mini.notify").setup() end)
-later(function() require("mini.trailspace").setup() end)
-later(function() require("core/clue") end)
-later(function() require("core/lsp") end)
-later(function() require("core/auto_format_on_save") end)
-later(function() require("extra/zk") end)
 
 -- Load work-specific config if it exists
 local work_config = vim.fn.expand("~/.work/init-work.lua")

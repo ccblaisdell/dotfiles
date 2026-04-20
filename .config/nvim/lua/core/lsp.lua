@@ -1,6 +1,3 @@
--- Completion
-MiniDeps.add({ source = "saghen/blink.cmp", checkout = "v0.13.0" })
-
 -- Reserve gutter space
 vim.opt.signcolumn = 'yes'
 

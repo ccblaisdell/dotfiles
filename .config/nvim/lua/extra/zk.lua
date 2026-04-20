@@ -1,5 +1,3 @@
-MiniDeps.add({ source = "zk-org/zk-nvim" })
-
 require("zk").setup({
   -- Can be "telescope", "fzf", "fzf_lua", "minipick", "snacks_picker",
   -- or select" (`vim.ui.select`). It's recommended to use "telescope",
