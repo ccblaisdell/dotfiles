@@ -1,10 +1,15 @@
+# Taps
+tap 'railwaycat/emacsmacport'
+
 # Binaries
 brew 'asdf'
 brew 'awk'
 brew 'bat'
+brew 'cmake'
 brew 'coreutils' # Those that come with macOS are outdated
 brew 'curl'
 brew 'direnv'
+brew 'emacs-mac'
 brew 'eza'
 brew 'fish'
 brew 'fzf'

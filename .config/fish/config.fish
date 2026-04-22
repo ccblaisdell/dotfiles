@@ -28,6 +28,7 @@ alias ls='eza'
 alias mux='tmuxinator'
 alias tf='terraform'
 alias vim="nvim"
+alias emacs="emacs -nw"
 alias y='yazi'
 
 # Pipe rg into delta for paging

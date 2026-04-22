@@ -38,18 +38,25 @@ This repo contains public/personal configurations. Work-specific configs live in
    brew bundle --file ~/.dotfiles/Brewfile
    ```
 
-5. **Clone work repo** (optional):
+5. **Install Doom Emacs**:
+   ```sh
+   git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+   ~/.config/emacs/bin/doom install
+   fish_add_path ~/.config/emacs/bin
+   ```
+
+6. **Clone work repo** (optional):
    ```sh
    git clone git@git.soma.salesforce.com:cblaisdell/dotfiles.git ~/.work
    brew bundle --file ~/.work/Brewfile
    ```
 
-6. **Set up macOS preferences**:
+7. **Set up macOS preferences**:
    ```sh
    source ~/.dotfiles/.macos
    ```
 
-7. **Verify multi-account setup** (see [ssh_config.md](./ssh_config.md) for testing commands):
+8. **Verify multi-account setup** (see [ssh_config.md](./ssh_config.md) for testing commands):
    ```sh
    # Test work directory uses work identity
    cd ~/dev && git config user.email
