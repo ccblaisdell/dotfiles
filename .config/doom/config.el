@@ -73,3 +73,11 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq shell-file-name (executable-find "bash"))
+(setq-default vterm-shell "/opt/homebrew/bin/fish")
+(setq-default explicit-shell-file-name "/opt/homebrew/bin/fish")
+
+(after! projectile
+  (setq projectile-project-root-files-bottom-up
+        (remove ".git" projectile-project-root-files-bottom-up)))
